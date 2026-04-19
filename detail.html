@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中川陽翔 — Detail</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 14px; }
+    body { font-family: 'Noto Sans JP', sans-serif; background: #fff; color: #111; line-height: 1.7; }
+
+    /* ── Nav ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: 52px; background: #fff;
+      border-bottom: 1px solid #d4d4d4;
+      display: flex; align-items: center;
+      padding: 0 40px; z-index: 100;
+      justify-content: space-between;
+    }
+    nav .logo { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 15px; letter-spacing: 0.06em; }
+    nav ul { display: flex; gap: 32px; list-style: none; }
+    nav ul a { font-family: 'Poppins', sans-serif; font-size: 12px; color: #888; text-decoration: none; letter-spacing: 0.06em; transition: color 0.2s; }
+    nav ul a:hover { color: #111; }
+
+    /* ── Main ── */
+    main { max-width: 960px; margin: 0 auto; padding: 120px 40px 100px; }
+
+    /* ── Page Header ── */
+    .page-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 80px; padding-bottom: 40px;
+      border-bottom: 1px solid #d4d4d4;
+    }
+    .page-header h1 { font-family: 'Poppins', sans-serif; font-size: 52px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 8px; }
+    .page-header .subtitle { font-family: 'Poppins', sans-serif; font-size: 12px; color: #999; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; }
+    .page-header .tagline { font-size: 13px; color: #555; }
+    .page-header .meta { text-align: right; font-family: 'Poppins', sans-serif; font-size: 12px; color: #999; line-height: 2.1; }
+
+    /* ── Section ── */
+    .section { margin-bottom: 72px; }
+    .section-label {
+      font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase; color: #999;
+      padding-top: 14px; border-top: 1px solid #111; margin-bottom: 32px;
+    }
+
+    /* ── Info Grid ── */
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 64px; }
+    .info-item .key { font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #bbb; margin-bottom: 4px; }
+    .info-item .value { font-size: 14px; color: #111; }
+    .info-item .value small { font-size: 12px; color: #888; }
+
+    /* ── Family Grid ── */
+    .family-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px 24px; }
+    .family-card .role { font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #bbb; margin-bottom: 8px; }
+    .family-card .name { font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+    .family-card .desc { font-size: 12px; color: #555; line-height: 1.75; }
+
+    /* ── Timeline ── */
+    .timeline-item { display: grid; grid-template-columns: 130px 1fr; gap: 40px; padding: 26px 0; border-bottom: 1px solid #ebebeb; }
+    .timeline-item:last-child { border-bottom: none; }
+    .tl-date { font-family: 'Poppins', sans-serif; font-size: 12px; color: #bbb; padding-top: 3px; letter-spacing: 0.04em; }
+    .tl-content .tl-title { font-family: 'Poppins', sans-serif; font-size: 15px; font-weight: 500; margin-bottom: 3px; }
+    .tl-content .tl-sub { font-family: 'Poppins', sans-serif; font-size: 11px; color: #aaa; letter-spacing: 0.06em; margin-bottom: 14px; }
+
+    /* ── Timeline Groups (kyo-style) ── */
+    .tl-group { margin-top: 18px; }
+    .tl-group-label {
+      font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase; color: #111;
+      margin-bottom: 8px;
+    }
+    .tl-bullets { list-style: none; padding: 0; }
+    .tl-bullets li {
+      font-size: 13px; color: #444; line-height: 1.85;
+      padding-left: 1.2em; position: relative; margin-bottom: 5px;
+    }
+    .tl-bullets li::before { content: '・'; position: absolute; left: 0; color: #111; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+    .tag { font-family: 'Poppins', sans-serif; font-size: 10px; letter-spacing: 0.08em; padding: 3px 10px; border: 1px solid #d4d4d4; color: #888; }
+
+    /* ── People Table ── */
+    .people-table { width: 100%; border-collapse: collapse; border: 1px solid #d4d4d4; }
+    .people-table th {
+      font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase; color: #999;
+      padding: 10px 16px; text-align: left;
+      border-bottom: 1px solid #d4d4d4; border-right: 1px solid #d4d4d4;
+      background: #fafafa;
+    }
+    .people-table th:last-child { border-right: none; }
+    .people-table td {
+      font-size: 13px; color: #444; line-height: 1.75;
+      padding: 12px 16px; vertical-align: top;
+      border-bottom: 1px solid #ebebeb; border-right: 1px solid #ebebeb;
+    }
+    .people-table td:last-child { border-right: none; }
+    .people-table tr:last-child td { border-bottom: none; }
+    .people-table .td-name { font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 500; color: #111; white-space: nowrap; }
+    .people-table .td-role { font-family: 'Poppins', sans-serif; font-size: 11px; color: #aaa; letter-spacing: 0.04em; white-space: nowrap; }
+
+    /* ── Hobbies Table ── */
+    .hobbies-table { width: 100%; border-collapse: collapse; border: 1px solid #d4d4d4; }
+    .hobbies-table th {
+      font-family: 'Poppins', sans-serif; font-size: 10px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase; color: #999;
+      padding: 10px 16px; text-align: left;
+      border-bottom: 1px solid #d4d4d4; border-right: 1px solid #d4d4d4;
+      background: #fafafa;
+    }
+    .hobbies-table th:last-child { border-right: none; }
+    .hobbies-table td {
+      font-size: 13px; color: #444; line-height: 1.85;
+      padding: 10px 16px; vertical-align: top;
+      border-bottom: 1px solid #ebebeb; border-right: 1px solid #ebebeb;
+    }
+    .hobbies-table td:last-child { border-right: none; }
+    .hobbies-table tr:last-child td { border-bottom: none; }
+    .hobbies-table .games-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px 24px; }
+    .hobbies-table .games-grid span { display: block; font-size: 13px; color: #444; padding: 4px 0; border-bottom: 1px solid #ebebeb; }
+    .hobbies-table .games-grid span:last-child { border-bottom: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 720px) {
+      .info-grid, .people-grid, .hobbies-grid { grid-template-columns: 1fr; }
+      .family-grid { grid-template-columns: 1fr 1fr; }
+      .page-header { flex-direction: column; gap: 20px; }
+      .page-header .meta { text-align: left; }
+      .timeline-item { grid-template-columns: 1fr; gap: 6px; }
+      main { padding: 96px 24px 60px; }
+      nav { padding: 0 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="logo">HARUTO</span>
+  <ul>
+    <li><a href="#info">Info</a></li>
+    <li><a href="#family">Family</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#people">People</a></li>
+    <li><a href="#hobbies">Hobbies</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- ── Header ── -->
+  <header class="page-header">
+    <div>
+      <h1>中川陽翔</h1>
+      <p class="subtitle">Nakagawa Haruto &nbsp;—&nbsp; Student × PM</p>
+      <p class="tagline">俯瞰の天才。幼稚園の頃からずっと冷静だった。</p>
+    </div>
+    <div class="meta">
+      <p>2004.06.27</p>
+      <p>東京都港区</p>
+      <p>Updated 2026.04</p>
+    </div>
+  </header>
+
+  <!-- ── Basic Info ── -->
+  <section class="section" id="info">
+    <p class="section-label">Basic Information</p>
+    <div class="info-grid">
+      <div class="info-item">
+        <p class="key">Status</p>
+        <p class="value">慶應義塾大学 3年生<br><small>経済学部 経済学科（B方式）/ 2024〜2025年 休学</small></p>
+      </div>
+      <div class="info-item">
+        <p class="key">Work</p>
+        <p class="value">株式会社 Wanderlust<br><small>業務委託 / PM</small></p>
+      </div>
+      <div class="info-item">
+        <p class="key">Born</p>
+        <p class="value">東京都港区南麻布<br><small>愛育クリニック</small></p>
+      </div>
+      <div class="info-item">
+        <p class="key">Hometown</p>
+        <p class="value">東京都港区<br><small>高輪 → 白金 → 広尾 → 六本木</small></p>
+      </div>
+      <div class="info-item">
+        <p class="key">High School</p>
+        <p class="value">慶應義塾高等学校<br><small>神奈川・文系・野球部</small></p>
+      </div>
+      <div class="info-item">
+        <p class="key">Future</p>
+        <p class="value">幸せに生きたい<br><small>勝負どころでは勝ちにいく。それ以外はストレスなく気楽に。</small></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Family ── -->
+  <section class="section" id="family">
+    <p class="section-label">Family</p>
+    <div class="family-grid">
+      <div class="family-card">
+        <p class="role">Father</p>
+        <p class="name">中川博貴</p>
+        <p class="desc">エキスパートアライアンス社長。東京都練馬区出身、末っ子（上に姉2人）。祖父は同社創業者かつ楽天生命の創設者という偉大な家系。毎日晩酌が欠かせない。</p>
+      </div>
+      <div class="family-card">
+        <p class="role">Mother</p>
+        <p class="name">中川美紅<small style="font-weight:400; font-size:12px; color:#999;">（旧姓：陳）</small></p>
+        <p class="desc">台湾・高雄市出身の専業主婦。英語・日本語・中国語のトリリンガル。父とはアメリカ留学中に出会う。料理がとにかく旨い。</p>
+      </div>
+      <div class="family-card">
+        <p class="role">Sister</p>
+        <p class="name">倫菜</p>
+        <p class="desc">2歳下、立教大学在学中。ほぼ喧嘩しないが、あまり話さない絶妙な距離感の兄妹。港区生まれ。</p>
+      </div>
+      <div class="family-card">
+        <p class="role">Dog</p>
+        <p class="name">ダイヤ</p>
+        <p class="desc">イタリアングレーハウンド、12歳。家族の一員。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Timeline ── -->
+  <section class="section" id="timeline">
+    <p class="section-label">Timeline</p>
+    <div>
+
+      <div class="timeline-item">
+        <p class="tl-date">2004</p>
+        <div class="tl-content">
+          <p class="tl-title">誕生</p>
+          <p class="tl-sub">東京都港区南麻布 / 愛育クリニック</p>
+          <div class="tl-group">
+            <p class="tl-group-label">生い立ち</p>
+            <ul class="tl-bullets">
+              <li>東京都港区南麻布の愛育クリニックで生まれる</li>
+              <li>0〜4歳は港区高輪・魚藍坂の上で育つ</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <p class="tl-date">2008 — 2011</p>
+        <div class="tl-content">
+          <p class="tl-title">港区立三光幼稚園</p>
+          <p class="tl-sub">港区白金 / 幼稚園</p>
+          <div class="tl-group">
+            <p class="tl-group-label">環境</p>
+            <ul class="tl-bullets">
+              <li>4歳で白金に転居し入園。同学年に久光製薬・久光家</li>
+              <li>はっちゃけながらも常に周囲を観察していた</li>
+              <li>自己中な人間は最初から苦手——この感覚は今も変わらない</li>
+            </ul>
+          </div>
+          <div class="tl-group">
+            <p class="tl-group-label">習い事</p>
+            <ul class="tl-bullets">
+              <li>5歳でピアノ教室に通い始める</li>
+            </ul>
+          </div>
+          <div class="tl-group">
+            <p class="tl-group-label">エピソード</p>
+            <ul class="tl-bullets">
+              <li>発表会後のプレゼントに興奮しすぎた夕食時、石窯うどん屋の焼け石を触って火傷——好奇心で何も考えず動いてしまうというバカな一面もあった</li>
+            </ul>
+          </div>
+          <div class="tags"><span class="tag">白金</span><span class="tag">ピアノ開始</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <p class="tl-date">2011 — 2017</p>
+        <div class="tl-content">
+          <p class="tl-title">笄小学校</p>
+          <p class="tl-sub">港区広尾 / 小学校 / 入学と同時に広尾へ引っ越し</p>
+          <div class="tl-group">
+            <p class="tl-group-label">環境</p>
+            <ul class="tl-bullets">
+              <li>葉加瀬太郎の息子、杉内俊哉・岩村明憲の息子などがいる恵まれた学校</li>
+              <li>学校では比較的寡黙で穏やか。スポーツになると負けず嫌いな一面を見せた</li>
+              <li>1〜2年：転校していく友達が多く、そのたびに悲しんでいた。港区あるある</li>
+            </ul>
+          </div>
+          <div class="tl-group">
+            <p class="tl-group-label">小2 / 野球</p>
+            <ul class="tl-bullets">
+              <li>幼馴染の影響で地元の野球チームに入団</li>
+              <li>運動神経の良さから低学年ながら1番ショートを任され、素振りに没頭する日々が始まる</li>
+            </ul>
+          </div>
+          <div class="tl-group">
+            <p class="tl-group-label">小3〜4</p>
+            <ul class="tl-bullets">
+              <li>石賀悠・梅原こうたと同クラスに。梅原とは同マンションで毎日放課後を共にし、SAPIXにも一緒に通い始めた</li>
+              <li>バレンタインを1on1でもらい始めた時期でもある</li>
+            </ul>
+          </div>
+          <div class="tl-group">
+            <p class="tl-group-label">小5〜6</p>
+            <ul class="tl-bullets">
+              <li>エースとしてチームを牽引。足の速さと成績の良さで周囲から一目置かれる存在に</li>
+              <li>初めて好きな人もできた。向こうから告白を受けたが、シャイすぎる性格と受験への集中からずっとペンディングのまま消滅させた</li>
+              <li>志望校は「大学受験のない学校」×「野球の強い学校」の2軸で早稲田実業と慶應中等部に絞る</li>
+            </ul>
+          </div>
+          <div class="tags"><span class="tag">広尾</span><span class="tag">SAPIX</span><span class="tag">野球 1番ショート</span><span class="tag">中受全勝</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <p class="tl-date">2017 — 2020</p>
+        <div class="tl-content">
+          <p class="tl-title">慶應義塾中等部</p>
+          <p class="tl-sub">東京 / 中学校 · 野球部 · 社会研究会 / 「この選択マジで合ってた」</p>
+          <div class="tl-group">
+            <p class="tl-group-label">入学</p>
+            <ul class="tl-bullets">
+              <li>早稲田実業・広尾学園・栄東など複数校を全勝。坊主不要・家が近い、という決め手で慶應を選択</li>
+              <li>入学後すぐに野球部と社会研究会に入部。成績はほぼトップ</li>
+              <li>六本木の映画館・渋谷のボウリングなど理想の中学ライフを謳歌した</li>
+            </ul>
+          </div>
+          <div class="tl-group">
+            <p class="tl-group-label">中1 / スランプ</p>
+            <ul class="tl-bullets">
+              <li>秋頃からクリーンナップで試合に出場するも、冬に突然打てなくなり深刻なスランプに陥りスタメンを外れる</li>
+              <li>打席内で考えすぎてプレーが消極的になっていた</li>
+              <li>学生コーチの「お前の良さは思い切りだから、あまり考えずに振ればいい」という一言でスタイルを取り戻した</li>
+            </ul>
+          </div>
+          <div class="tl-group">
+            <p class="tl-group-label">中2 / 快挙</p>
+            <ul class="tl-bullets">
+              <li>トップバッターとしてチームを牽引。都大会ベスト8、野球部として数十年ぶりの快挙</li>
+              <li>「考えるべきこと」と「考えすぎないほうがいいこと」の線引きを日常にも意識するようになった</li>
+            </ul>
+          </div>
+          <div class="tl-group">
+            <p class="tl-group-label">中3</p>
+            <ul class="tl-bullets">
+              <li>キャッチャーとしてリーダー的な役割を担う</li>
+              <li>のちに大学No.1投手へと成長する広池こうせいとバッテリーを組んだ</li>
+            </ul>
+          </div>
+          <div class="tags"><span class="tag">野球部</span><span class="tag">社会研究会</span><span class="tag">都大会ベスト8</span><span class="tag">成績トップ</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <p class="tl-date">2020 — 2023</p>
+        <div class="tl-content">
+          <p class="tl-title">慶應義塾高等学校</p>
+          <p class="tl-sub">神奈川 / 高校 · 硬式野球部 / 目標を定めることが下手くそな時期</p>
+          <div class="tl-group">
+            <p class="tl-group-label">コロナ</p>
+            <ul class="tl-bullets">
+              <li>入学直後はコロナ禍の影響で半年ほどまともな練習ができず、オンライントレーニングが中心に</li>
+            </ul>
+          </div>
+          <div class="tl-group">
+            <p class="tl-group-label">1〜2年</p>
+            <ul class="tl-bullets">
+              <li>強豪校の先輩たちの中でついていくのに精一杯。中学まで当たり前だった試合出場が叶わない状況に大きなショックを受けた</li>
+              <li>向上心が周りより低く、めちゃ練習をこなすだけのやつだった。目標を定めることが下手くそだった——この課題は今も変わっていない</li>
+            </ul>
+          </div>
+          <div class="tl-group">
+            <p class="tl-group-label">3年</p>
+            <ul class="tl-bullets">
+              <li>ファーストとして下級生のころから大学生コーチに「持ってかれる」と評される存在に</li>
+              <li>相性の悪いコーチのストレスの捌け口にされるという苦い経験もした（そのコーチは三井物産へ）</li>
+              <li>花咲徳栄の投手から三球三振を喫したことが思い出として残る</li>
+              <li>一つ下の学年が2023年夏の甲子園で優勝</li>
+            </ul>
+          </div>
+          <div class="tags"><span class="tag">コロナ世代</span><span class="tag">甲子園世代</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <p class="tl-date">2023.04</p>
+        <div class="tl-content">
+          <p class="tl-title">慶應義塾大学 入学</p>
+          <p class="tl-sub">経済学部 経済学科（B方式）/ 普通すぎるほど普通の大学生</p>
+          <div class="tl-group">
+            <p class="tl-group-label">サークル</p>
+            <ul class="tl-bullets">
+              <li>バレーボールサークルに入部——野球以外の新しいスポーツへの挑戦</li>
+              <li>夏合宿で友達だけ作って、やめた。外部の友達を作ることが目的だったので達成。その友達とはスノボや徹夜桃鉄などやった</li>
+            </ul>
+          </div>
+          <div class="tl-group">
+            <p class="tl-group-label">バイト</p>
+            <ul class="tl-bullets">
+              <li>地元の高級焼き鳥店でホールスタッフ。少人数運営で6時間以上立ちっぱなしの接客も多かったが、社会人との会話やお酒の知識を学んだ。「金持ちは余裕が違う」</li>
+              <li>個別指導塾の講師として小中学生の指導にも携わる。小学生はかわいい</li>
+            </ul>
+          </div>
+          <div class="tl-group">
+            <p class="tl-group-label">コーチ</p>
+            <ul class="tl-bullets">
+              <li>中学校の野球部コーチを大1〜大3まで担当。恩師への恩返しとして始めた活動</li>
+            </ul>
+          </div>
+          <div class="tags"><span class="tag">バレーボールサークル</span><span class="tag">焼き鳥バイト</span><span class="tag">塾講師</span><span class="tag">中学コーチ</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <p class="tl-date">2024.04</p>
+        <div class="tl-content">
+          <p class="tl-title">SNSマーケティング会社インターン</p>
+          <p class="tl-sub">大学2年 / 約3ヶ月</p>
+          <div class="tl-group">
+            <p class="tl-group-label">業務</p>
+            <ul class="tl-bullets">
+              <li>TikTokアカウントを自ら運営し、視聴者インサイトの分析とPDCAを回す業務に従事</li>
+              <li>企業クライアントのSNS運用にも関わり始めた</li>
+            </ul>
+          </div>
+          <div class="tl-group">
+            <p class="tl-group-label">転換</p>
+            <ul class="tl-bullets">
+              <li>AI分野の長期的な価値を確信し、友人の紹介でAIスタートアップへ転換することを決意。3ヶ月で区切りをつけた</li>
+            </ul>
+          </div>
+          <div class="tags"><span class="tag">TikTok</span><span class="tag">SNS運用</span><span class="tag">PDCA</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <p class="tl-date">2024.09</p>
+        <div class="tl-content">
+          <p class="tl-title">kyo と出会う</p>
+          <p class="tl-sub">人生の転機</p>
+          <div class="tl-group">
+            <p class="tl-group-label">経緯</p>
+            <ul class="tl-bullets">
+              <li>高校野球同期の久保田翔己の紹介で Wanderlust CEO の kyo と初対面</li>
+              <li>「初めから休学を強要する詐欺みたいな危ない人」。この出会いが人生を変える</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <p class="tl-date">2024.10 — 2025.09</p>
+        <div class="tl-content">
+          <p class="tl-title">株式会社 Wanderlust / 1年間休学</p>
+          <p class="tl-sub">東大松尾研究室発 AIスタートアップ / 業務委託 PM / 週60h</p>
+          <div class="tl-group">
+            <p class="tl-group-label">業務</p>
+            <ul class="tl-bullets">
+              <li>最初の3ヶ月は業界・企業リサーチを徹底し、売上や時価総額など事業の基礎感覚を習得</li>
+              <li>その後 GSユアサ等クライアントの勉強会・RAG案件を担当するPMへ。週60時間稼働</li>
+            </ul>
+          </div>
+          <div class="tl-group">
+            <p class="tl-group-label">気づき</p>
+            <ul class="tl-bullets">
+              <li>「自分は相手の気持ちがわかる人間だ」と思っていたが、実際には上司にとって意思決定しにくいアウトプットを出していたり、相手のUXを考えないタスク移譲をしていたりと、自己中心的な働き方をしていたことに気づいた</li>
+              <li>めちゃ人のことを考えるのが重要だと体で学んだ</li>
+              <li>人生の幅がめちゃ広がった</li>
+            </ul>
+          </div>
+          <div class="tags"><span class="tag">AI</span><span class="tag">RAG</span><span class="tag">PM</span><span class="tag">東大松尾研</span><span class="tag">休学</span></div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <p class="tl-date">2025.10</p>
+        <div class="tl-content">
+          <p class="tl-title">慶應義塾大学 復学</p>
+          <p class="tl-sub">経済学部 3年生 / Wanderlust 業務委託は継続</p>
+          <div class="tl-group">
+            <p class="tl-group-label">現在</p>
+            <ul class="tl-bullets">
+              <li>学業と業務委託を並行しながら、自分の幸せとは何かを探している</li>
+              <li>勝負どころでは勝ちにいく。それ以外はストレスなく、気楽に生きたい</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Key People ── -->
+  <section class="section" id="people">
+    <p class="section-label">Key People</p>
+    <table class="people-table">
+      <thead>
+        <tr>
+          <th style="width:140px;">Name</th>
+          <th style="width:160px;">Relation</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="td-name">梅原こうた</span><br><span class="td-role">小学校の親友</span></td>
+          <td>小3〜6年 同クラス・同マンション</td>
+          <td>SAPIXも一緒。毎日放課後を共にした。麻布中高を経て東大へ。</td>
+        </tr>
+        <tr>
+          <td><span class="td-name">坂入虎良彦</span><br><span class="td-role">少年野球の盟友</span></td>
+          <td>小3〜4年 毎日一緒</td>
+          <td>少年野球のキャプテン。ヤクルトファンになったきっかけでもある。中2頃に父を亡くし、身近な人の死を初めて経験した。この喪失感・後悔を今後感じないように、今できることは頑張ろうという気持ちを大事にしたいと思っている。</td>
+        </tr>
+        <tr>
+          <td><span class="td-name">石賀悠</span><br><span class="td-role">小学校からの友人</span></td>
+          <td>小3〜 笄小学校</td>
+          <td>3〜4年で特に仲良くなった。大学時代にWanderlustに誘い、一緒に休学して働いた。</td>
+        </tr>
+        <tr>
+          <td><span class="td-name">奥野れい</span><br><span class="td-role">地元の大親友</span></td>
+          <td>中学〜 地元</td>
+          <td>中学から付き合いのある地元の大親友。来年からサイバーエージェントに就職予定。</td>
+        </tr>
+        <tr>
+          <td><span class="td-name">久保田翔己</span><br><span class="td-role">高校野球同期</span></td>
+          <td>高校 野球部</td>
+          <td>kyoとの出会いを作った、高校野球部の同期。</td>
+        </tr>
+        <tr>
+          <td><span class="td-name">kyo</span><br><span class="td-role">Wanderlust CEO</span></td>
+          <td>2024.09〜 転機の人</td>
+          <td>Wanderlust参加・休学のきっかけとなった人物。出会い方は強引だったが、人生の幅を広げてくれた存在。</td>
+        </tr>
+        <tr>
+          <td><span class="td-name">IR</span><br><span class="td-role">中学時代</span></td>
+          <td>小5〜 中1〜3</td>
+          <td>小5から知り合い、中学1〜3年で付き合った。ずっと両思いだったとわかってからの関係。</td>
+        </tr>
+        <tr>
+          <td><span class="td-name">MR</span><br><span class="td-role">大学時代 / 約1年</span></td>
+          <td>大学〜</td>
+          <td>大学から付き合った彼女。中国人で佐倉在住、ひとり親家庭育ち。生まれや育ちの違いは彼女にするには難しいと感じた経験になった。</td>
+        </tr>
+        <tr>
+          <td><span class="td-name">OY</span><br><span class="td-role">現在 / 2026.03〜</span></td>
+          <td>マチアプ 慶應同期</td>
+          <td>SFC中高出身。性格がめちゃくちゃ似ていて、話し合いができる、優しくて価値観の合うパートナー。</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ── Hobbies ── -->
+  <section class="section" id="hobbies">
+    <p class="section-label">Preferences</p>
+    <table class="hobbies-table" style="margin-bottom: 2px;">
+      <thead>
+        <tr>
+          <th>Sports / Teams</th>
+          <th>Food</th>
+          <th>Places</th>
+          <th>Others</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>野球</td>
+          <td>サーモン</td>
+          <td>夏の北海道</td>
+          <td>好きな色：ひまわりイエロー</td>
+        </tr>
+        <tr>
+          <td>東京ヤクルトスワローズ（坂入の影響）</td>
+          <td>冷凍汁なし担々麺</td>
+          <td>地元・港区</td>
+          <td>最近の趣味：株価鑑賞</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>母の料理全般</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>ラ・ボエム</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="hobbies-table" style="margin-top: 24px;">
+      <thead>
+        <tr>
+          <th colspan="3">Games（歴代）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Wii — マリオカート</td>
+          <td>Wiiスポーツ</td>
+          <td>Wiiパーティー</td>
+        </tr>
+        <tr>
+          <td>3DS — ポケモン</td>
+          <td>妖怪ウォッチ</td>
+          <td>プロスピ</td>
+        </tr>
+        <tr>
+          <td>クラッシュ・ロワイヤル</td>
+          <td>荒野行動</td>
+          <td>eFootball</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+</body>
+</html>
