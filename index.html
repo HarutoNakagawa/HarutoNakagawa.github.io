@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --bg: #ffffff; --text: #111111; --mid: #555555; --muted: #999999; --dim: #cccccc; --border: #e0e0e0; }
+body { background: var(--bg); color: var(--text); font-family: 'Poppins', sans-serif; font-size: 13px; min-height: 100vh; padding-top: 56px; padding-bottom: 68px; }
+.header { background: #111; color: #fff; padding: 52px 48px 44px; }
+.header h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+.main { max-width: 600px; padding: 52px 48px 80px; }
+.dir-block { margin-bottom: 44px; }
+.dir-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
+.dir-name { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.sub-list { padding-left: 44px; display: flex; flex-direction: column; gap: 2px; }
+.sub-item { display: flex; align-items: baseline; gap: 10px; padding: 5px 0; text-decoration: none; }
+.sub-item:hover .sub-label-name { color: var(--mid); }
+.sub-label-name { font-size: 13.5px; font-weight: 600; color: var(--text); letter-spacing: -.01em; }
+@media (max-width: 600px) { .header { padding: 36px 24px 32px; } .main { padding: 40px 24px 60px; } }
+
+/* NAVBAR */
+.snav { position: fixed; top: 0; left: 0; right: 0; height: 56px; background: #111; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; z-index: 9999; font-family: 'Poppins', sans-serif; }
+.snav-logo { color: #fff; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: .02em; transition: opacity .15s; }
+.snav-logo:hover { opacity: .6; }
+.snav-btn { background: none; border: none; cursor: pointer; padding: 6px; display: flex; flex-direction: column; gap: 5px; }
+.snav-btn span { display: block; width: 20px; height: 1.5px; background: #fff; transition: all .2s ease; }
+.snav-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.snav-btn.open span:nth-child(2) { opacity: 0; }
+.snav-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.snav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.55); z-index: 9998; cursor: pointer; }
+.snav-overlay.open { display: block; }
+.snav-panel { position: fixed; top: 0; right: 0; bottom: 0; width: 260px; background: #111; z-index: 9999; transform: translateX(100%); transition: transform .25s ease; padding: 68px 32px 72px; font-family: 'Poppins', sans-serif; overflow-y: auto; }
+.snav-panel.open { transform: translateX(0); }
+.snav-sec { margin-bottom: 28px; }
+.snav-sec-label { font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.28); margin-bottom: 8px; }
+.snav-a { display: block; color: rgba(255,255,255,.8); text-decoration: none; font-size: 13px; font-weight: 600; padding: 5px 0; letter-spacing: -.01em; transition: color .12s; }
+.snav-a:hover { color: #fff; }
+.snav-footer { position: fixed; bottom: 0; left: 0; right: 0; height: 62px; background: #111; border-top: 1px solid #222; display: flex; align-items: center; justify-content: center; padding: 0 28px; font-family: 'Poppins', sans-serif; z-index: 9997; }
+.snav-footer-sns { display: flex; gap: 20px; }
+.snav-footer-sns a { color: rgba(255,255,255,.4); text-decoration: none; font-size: 11px; font-weight: 500; letter-spacing: .06em; transition: color .15s; }
+.snav-footer-sns a:hover { color: rgba(255,255,255,.9); }
+</style>
+</head>
+<body>
+
+<nav class="snav">
+  <a href="/index.html" class="snav-logo">HarutoNakagawa</a>
+  <button id="snavBtn" class="snav-btn" onclick="snavToggle()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div id="snavOverlay" class="snav-overlay" onclick="snavToggle()"></div>
+<div id="snavPanel" class="snav-panel">
+  <div class="snav-sec">
+    <div class="snav-sec-label">Personal</div>
+    <a href="/personal/profile/" class="snav-a">profile</a>
+    <a href="/health/" class="snav-a">health</a>
+  </div>
+  <div class="snav-sec">
+    <div class="snav-sec-label">Research</div>
+    <a href="/research/stock/" class="snav-a">stock</a>
+    <a href="/research/" class="snav-a">research</a>
+  </div>
+</div>
+
+<footer class="snav-footer">
+  <div class="snav-footer-sns">
+    <a href="https://github.com/HarutoNakagawa" target="_blank">GitHub</a>
+  </div>
+</footer>
+
+<div class="header">
+  <h1>HarutoNakagawa</h1>
+</div>
+
+<div class="main">
+  <div class="dir-block">
+    <div class="dir-header">
+      <span class="dir-name">Personal</span>
+    </div>
+    <div class="sub-list">
+      <a href="/personal/profile/" class="sub-item">
+        <span class="sub-label-name">profile</span>
+      </a>
+      <a href="/health/" class="sub-item">
+        <span class="sub-label-name">health</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="dir-block">
+    <div class="dir-header">
+      <span class="dir-name">Research</span>
+    </div>
+    <div class="sub-list">
+      <a href="/research/stock/" class="sub-item">
+        <span class="sub-label-name">stock</span>
+      </a>
+      <a href="/research/" class="sub-item">
+        <span class="sub-label-name">research</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+function snavToggle() {
+  document.getElementById('snavBtn').classList.toggle('open');
+  document.getElementById('snavPanel').classList.toggle('open');
+  document.getElementById('snavOverlay').classList.toggle('open');
+}
+</script>
+</body>
+</html>
