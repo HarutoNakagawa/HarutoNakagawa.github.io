@@ -350,7 +350,7 @@
     { key: "交際", em: "🍻" }, { key: "健康", em: "💊" }, { key: "住まい", em: "🏠" },
     { key: "その他", em: "✨" }
   ];
-  var METHODS = ["現金", "カード", "QR", "IC", "口座"];
+  var METHODS = ["現金", "JALカード", "三井住友カード", "PayPay", "IC", "口座"];
   var WD = ["日", "月", "火", "水", "木", "金", "土"];
   var STORE = "kakeibo.v1";
 
@@ -374,6 +374,8 @@
         }
       }
     } catch (e) { expenses = []; }
+    if (!CATS.some(function (c) { return c.key === cat; })) cat = CATS[0].key;
+    if (METHODS.indexOf(method) < 0) method = METHODS[0];
   }
   function save() {
     try {
